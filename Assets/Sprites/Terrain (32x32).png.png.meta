@@ -328,7 +328,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -376,7 +376,7 @@ TextureImporter:
       name: Terrain (32x32).png_0
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 352
         width: 32
         height: 32
@@ -712,7 +712,7 @@ TextureImporter:
       name: Terrain (32x32).png_16
       rect:
         serializedVersion: 2
-        x: 255
+        x: 256
         y: 320
         width: 32
         height: 32
@@ -1342,7 +1342,7 @@ TextureImporter:
       name: Terrain (32x32).png_46
       rect:
         serializedVersion: 2
-        x: 543
+        x: 544
         y: 224
         width: 32
         height: 32
@@ -1700,7 +1700,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 127
+        y: 128
         width: 32
         height: 32
       alignment: 0
