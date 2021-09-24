@@ -206,40 +206,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &722621786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2412158511820450989, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
-  m_PrefabInstance: {fileID: 2412158510646077711}
-  m_PrefabAsset: {fileID: 0}
---- !u!60 &722621787
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722621786}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.9333333, y: 1.9333333}
-    newSize: {x: 1.8125, y: 1.8125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.15317985, y: -0.45030212}
-      - {x: 0.31668657, y: -0.44736663}
-      - {x: 0.3179073, y: -0.49049664}
-      - {x: -0.15264061, y: -0.49110353}
 --- !u!1 &791417400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3948,34 +3914,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2249065363386047142, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174439331, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
-      propertyPath: m_Size.x
-      value: 1.1763973
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174439331, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
-      propertyPath: m_Size.y
-      value: 0.82787776
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174439331, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 6927f47041036904885c312d6afded4e, type: 2}
-    - target: {fileID: 1174439331, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.053220153
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174439331, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.07063103
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335756862, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
-      propertyPath: jumpSpeed
-      value: 8.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2412158511820450986, guid: 176b123f3f4bf254ab2586fea921aac4, type: 3}
       propertyPath: m_RootOrder
       value: 2
