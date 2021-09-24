@@ -6,20 +6,39 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Player : MonoBehaviour
 {
     [SerializeField] float runSpeed = 5f;
-    protected Rigidbody2D thisRigidBody;
-    protected Animator myAnimator;
+    [SerializeField] float jumpSpeed = 8.5f;
+
+    Rigidbody2D thisRigidBody;
+    Animator myAnimator;
+    BoxCollider2D myBoxCollider;
+    PolygonCollider2D myPolygonFeet;
 
     // Start is called before the first frame update
     void Start()
     {
         thisRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myBoxCollider = GetComponent<BoxCollider2D>();
+        myPolygonFeet = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Run();
+        Jump();
+    }
+
+    private void Jump()
+    {
+        bool isJumping = CrossPlatformInputManager.GetButtonDown("Jump");
+        bool onGround = myPolygonFeet.IsTouchingLayers(LayerMask.GetMask("Ground"));
+
+        if (isJumping && onGround)
+        {
+            Vector2 jumpVelocity = new Vector2(thisRigidBody.velocity.x, jumpSpeed);
+            thisRigidBody.velocity = jumpVelocity;
+        }
     }
 
     private void Run()
