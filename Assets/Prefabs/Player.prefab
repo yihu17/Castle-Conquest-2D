@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 5
+  climbSpeed: 5
   jumpSpeed: 8.5
 --- !u!60 &722621787
 PolygonCollider2D:
@@ -193,7 +194,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.15317985, y: -0.45030212}
-      - {x: 0.31668657, y: -0.44736663}
+    - - {x: -0.15317985, y: -0.34755516}
+      - {x: 0.31939042, y: -0.34732345}
       - {x: 0.3179073, y: -0.49049664}
       - {x: -0.15264061, y: -0.49110353}
