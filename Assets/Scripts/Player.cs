@@ -6,12 +6,15 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Player : MonoBehaviour
 {
     [SerializeField] float runSpeed = 5f;
+    [SerializeField] float climbSpeed = 5f;
     [SerializeField] float jumpSpeed = 8.5f;
 
     Rigidbody2D thisRigidBody;
     Animator myAnimator;
     BoxCollider2D myBoxCollider;
     PolygonCollider2D myPolygonFeet;
+
+    float gravityScale;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,8 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBoxCollider = GetComponent<BoxCollider2D>();
         myPolygonFeet = GetComponent<PolygonCollider2D>();
+
+        gravityScale = thisRigidBody.gravityScale;
     }
 
     // Update is called once per frame
@@ -27,6 +32,27 @@ public class Player : MonoBehaviour
     {
         Run();
         Jump();
+        Climb();
+    }
+
+    private void Climb()
+    {
+        bool isClimbing = myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Drapes"));
+
+        if (isClimbing)
+        {
+            float controlFlow = CrossPlatformInputManager.GetAxis("Vertical");
+            Vector2 climbingVelocity = new Vector2(thisRigidBody.velocity.x, controlFlow * climbSpeed);
+            thisRigidBody.velocity = climbingVelocity;
+
+            thisRigidBody.gravityScale = 0f;
+        }
+        else
+        {
+            thisRigidBody.gravityScale = gravityScale;
+        }
+
+        myAnimator.SetBool("Climbing", isClimbing);
     }
 
     private void Jump()
