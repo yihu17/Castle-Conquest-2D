@@ -50,6 +50,9 @@ TagManager:
   - name: Drapes
     uniqueID: 604640173
     locked: 0
+  - name: Bomb
+    uniqueID: 2741530765
+    locked: 0
   - name: Player
     uniqueID: 1601184967
     locked: 0

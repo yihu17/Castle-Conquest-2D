@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] float jumpSpeed = 8.5f;
+    [SerializeField] Vector2 knockBack = new Vector2(50f, 50f);
 
     Rigidbody2D thisRigidBody;
     Animator myAnimator;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     PolygonCollider2D myPolygonFeet;
 
     float gravityScale;
+    bool frozen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +32,32 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Run();
-        Jump();
-        Climb();
+        if(!frozen)
+        {
+            Run();
+            Jump();
+            Climb();
+
+            if (myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+            {
+                PlayerHit();
+            }
+        }
+    }
+
+    private void PlayerHit()
+    {
+        thisRigidBody.velocity = knockBack * new Vector2(-transform.localScale.x, 1f);
+        myAnimator.SetTrigger("Knock Back");
+        frozen = true;
+
+        StartCoroutine(Freeze());
+    }
+
+    IEnumerator Freeze()
+    {
+        yield return new WaitForSeconds(2f);
+        frozen = false;
     }
 
     private void Climb()
