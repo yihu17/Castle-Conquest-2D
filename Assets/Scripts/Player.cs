@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void PlayerHit()
+    public void PlayerHit()
     {
         thisRigidBody.velocity = knockBack * new Vector2(-transform.localScale.x, 1f);
         myAnimator.SetTrigger("Knock Back");

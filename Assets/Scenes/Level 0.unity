@@ -4247,6 +4247,8 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: -725336713
     m_ParentHash: 756556552
+  - m_Hash: -628361021
+    m_ParentHash: 756556552
 --- !u!4 &1368389195
 Transform:
   m_ObjectHideFlags: 0
@@ -22307,6 +22309,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7541800184665261961, guid: b240a5932471cf14d8ae11b925bf661a, type: 3}
+      propertyPath: blastRadius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541800184665261961, guid: b240a5932471cf14d8ae11b925bf661a, type: 3}
+      propertyPath: blastForce.x
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541800184665261961, guid: b240a5932471cf14d8ae11b925bf661a, type: 3}
+      propertyPath: blastForce.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7541800184665261962, guid: b240a5932471cf14d8ae11b925bf661a, type: 3}
       propertyPath: m_RootOrder
       value: 5
