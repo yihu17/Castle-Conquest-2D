@@ -7,19 +7,31 @@ public class Enemy : MonoBehaviour
     [SerializeField] float runSpeed = 3f;
 
     Rigidbody2D thisRigidBody;
-    BoxCollider2D myBoxCollider;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         thisRigidBody = GetComponent<Rigidbody2D>();
-        myBoxCollider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(IsFacingLeft())
+        Movement();
+    }
+    public void Death()
+    {
+        animator.SetTrigger("Death");
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        thisRigidBody.bodyType = RigidbodyType2D.Static;
+    }
+
+    private void Movement()
+    {
+        if (IsFacingLeft())
         {
             thisRigidBody.velocity = new Vector2(-runSpeed, 0f);
         }
@@ -27,7 +39,6 @@ public class Enemy : MonoBehaviour
         {
             thisRigidBody.velocity = new Vector2(runSpeed, 0f);
         }
-        
     }
 
     private bool IsFacingLeft()
@@ -43,5 +54,10 @@ public class Enemy : MonoBehaviour
     private void FlipSprite()
     {
         transform.localScale = new Vector2(Mathf.Sign(thisRigidBody.velocity.x), 1f);
+    }
+
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }
