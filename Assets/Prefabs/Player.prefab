@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1628059155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628059156}
+  m_Layer: 0
+  m_Name: Hurt Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1628059156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628059155}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.47, y: -0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2412158511820450986}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2412158511820450989
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,7 +62,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1628059156}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +106,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1601184967
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -3329629929579024788, guid: 279c5e36aa653ef45a90f0cbc4fa6f3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -169,6 +200,9 @@ MonoBehaviour:
   runSpeed: 5
   climbSpeed: 5
   jumpSpeed: 8.5
+  attackRadius: 1
+  knockBack: {x: 50, y: 50}
+  hurtBox: {fileID: 1628059156}
 --- !u!60 &722621787
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -194,7 +228,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.15317985, y: -0.34755516}
-      - {x: 0.31939042, y: -0.34732345}
-      - {x: 0.3179073, y: -0.49049664}
-      - {x: -0.15264061, y: -0.49110353}
+    - - {x: 0.36666667, y: 0.43333337}
+      - {x: -0.23333335, y: 0.43333337}
+      - {x: -0.73333335, y: -0.033333335}
+      - {x: -0.73333335, y: -0.5666667}
+      - {x: 0.3, y: -0.5666667}
+      - {x: 0.6333334, y: -0.40000004}
+      - {x: 0.6333334, y: -0.13333334}
+      - {x: 0.43333337, y: 0.33333334}
