@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Wrold Confiner
   - Enemy
-  - 
+  - Interactables
   - 
   - 
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: Bomb
     uniqueID: 2741530765
+    locked: 0
+  - name: Interactables
+    uniqueID: 2965443057
     locked: 0
   - name: Player
     uniqueID: 1601184967

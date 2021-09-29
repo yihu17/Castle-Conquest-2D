@@ -40,11 +40,24 @@ public class Player : MonoBehaviour
             Jump();
             Climb();
             Attack();
+            EnterDoor();
 
             if (myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
             {
                 PlayerHit();
             }
+        }
+    }
+
+    private void EnterDoor()
+    {
+        bool isEntering = CrossPlatformInputManager.GetButtonDown("Vertical");
+        bool isTouching = myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Interactables"));
+
+        if (isEntering && isTouching)
+        {
+            Debug.Log("Entering new level");
+            FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
         }
     }
 
