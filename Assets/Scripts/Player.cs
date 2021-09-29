@@ -84,6 +84,8 @@ public class Player : MonoBehaviour
         frozen = true;
 
         StartCoroutine(Freeze());
+
+        FindObjectOfType<GameSession>().PlayerDeath();
     }
 
     IEnumerator Freeze()
