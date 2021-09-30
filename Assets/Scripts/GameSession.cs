@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
 
-    [SerializeField] int playerLives = 3;
+    [SerializeField] int playerLives = 3, score = 0;
+    [SerializeField] Text scoreText, liveText;
 
     private void Awake()
     {
@@ -21,13 +23,30 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        scoreText.text = score.ToString();
+        liveText.text = playerLives.ToString();
+    }
+
+    public void AddScore(int value)
+    {
+        score += value;
+        scoreText.text = score.ToString();
+    }
+
+    public void AddLives()
+    {
+        playerLives++;
+        liveText.text = playerLives.ToString();
+    }
+
     public void PlayerDeath()
     {
-        Debug.Log("Processing...");
         if (playerLives > 1)
         {
             playerLives--;
-            Debug.Log("Lives Left: " + playerLives);
+            liveText.text = playerLives.ToString();
         }
         else
         {
