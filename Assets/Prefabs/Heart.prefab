@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a1f77c5e1b38a4e98cbc03bfb21780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartSFX: {fileID: 8300000, guid: 9167cfbae0d55964a8eafcf78f7591ea, type: 3}
 --- !u!60 &8542854033586493793
 PolygonCollider2D:
   m_ObjectHideFlags: 0
