@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
         myPolygonFeet = GetComponent<PolygonCollider2D>();
 
         gravityScale = thisRigidBody.gravityScale;
+
+        myAnimator.SetTrigger("Door Out");
     }
 
     // Update is called once per frame
@@ -56,9 +58,20 @@ public class Player : MonoBehaviour
 
         if (isEntering && isTouching)
         {
-            Debug.Log("Entering new level");
-            FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
+            myAnimator.SetTrigger("Door In");
+            
         }
+    }
+
+    private void LoadNextLevel()
+    {
+        FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
+        TurnOffRenderder();
+    }
+
+    private void TurnOffRenderder()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void Attack()

@@ -12,11 +12,6 @@ public class ExitDoor : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Open");   
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        GetComponent<Animator>().SetTrigger("Close");
-    }
-
     public void StartLoadingNextLevel()
     {
         GetComponent<Animator>().SetTrigger("Close");
