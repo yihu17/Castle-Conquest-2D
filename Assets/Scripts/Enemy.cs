@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Death");
         GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
-        thisRigidBody.bodyType = RigidbodyType2D.Static;
+        runSpeed = 0f;
     }
 
     private void Movement()
