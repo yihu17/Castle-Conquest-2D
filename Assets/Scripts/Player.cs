@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
     public void PlayerHit()
     {
         thisRigidBody.velocity = knockBack * new Vector2(-transform.localScale.x, 1f);
+        myAudioSource.PlayOneShot(getHitSFX);
         myAnimator.SetTrigger("Knock Back");
         frozen = true;
 
