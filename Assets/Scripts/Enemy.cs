@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float runSpeed = 3f;
+    [SerializeField] AudioClip deathSFX;
 
     Rigidbody2D thisRigidBody;
     Animator animator;
@@ -59,5 +60,10 @@ public class Enemy : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(gameObject);
+    }
+
+    void PlayDeathSFX()
+    {
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
     }
 }

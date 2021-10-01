@@ -10,12 +10,14 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpSpeed = 8.5f;
     [SerializeField] float attackRadius = 1f;
     [SerializeField] Vector2 knockBack = new Vector2(50f, 50f);
-    [SerializeField] Transform hurtBox;
+    [SerializeField] Transform hurtBox; 
+    [SerializeField] AudioClip jumpingSFX, attackingSFX, getHitSFX, walkingSFX;
 
     Rigidbody2D thisRigidBody;
     Animator myAnimator;
     BoxCollider2D myBoxCollider;
     PolygonCollider2D myPolygonFeet;
+    AudioSource myAudioSource;
 
     float gravityScale;
     bool frozen = false;
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBoxCollider = GetComponent<BoxCollider2D>();
         myPolygonFeet = GetComponent<PolygonCollider2D>();
+        myAudioSource = GetComponent<AudioSource>();
 
         gravityScale = thisRigidBody.gravityScale;
 
@@ -81,6 +84,7 @@ public class Player : MonoBehaviour
         if(isAttacking)
         {
             myAnimator.SetTrigger("Attacking");
+            myAudioSource.PlayOneShot(attackingSFX);
             Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(hurtBox.position, attackRadius, LayerMask.GetMask("Enemy"));
 
             foreach(Collider2D enemy in enemiesInRange)
@@ -92,6 +96,7 @@ public class Player : MonoBehaviour
 
     public void PlayerHit()
     {
+        myAudioSource.PlayOneShot(getHitSFX);
         thisRigidBody.velocity = knockBack * new Vector2(-transform.localScale.x, 1f);
         myAnimator.SetTrigger("Knock Back");
         frozen = true;
@@ -136,6 +141,8 @@ public class Player : MonoBehaviour
         {
             Vector2 jumpVelocity = new Vector2(thisRigidBody.velocity.x, jumpSpeed);
             thisRigidBody.velocity = jumpVelocity;
+
+            myAudioSource.PlayOneShot(jumpingSFX);
         }
     }
 
@@ -161,6 +168,23 @@ public class Player : MonoBehaviour
         if (horizontalRun)
         {
             transform.localScale = new Vector2(Mathf.Sign(thisRigidBody.velocity.x), 1f);
+        }
+    }
+
+    void WalkingSFX()
+    {
+        bool horizontalRun = Mathf.Abs(thisRigidBody.velocity.x) > Mathf.Epsilon;
+
+        if(horizontalRun)
+        {
+            if (myPolygonFeet.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {
+                myAudioSource.PlayOneShot(walkingSFX);
+            }
+        }
+        else
+        {
+            myAudioSource.Stop();
         }
     }
 

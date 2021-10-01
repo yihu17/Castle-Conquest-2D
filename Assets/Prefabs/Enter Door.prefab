@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6045fbf276fdd6499b8d83a07f6d83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openingSFX: {fileID: 8300000, guid: d0a1591efcc0b3c49a71f9726461815a, type: 3}
+  closingSFX: {fileID: 8300000, guid: 6f82cdfc2d103764f91da56af23a29c7, type: 3}
 --- !u!95 &1216135020627475368
 Animator:
   serializedVersion: 3

@@ -9,7 +9,7 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] int playerLives = 3, score = 0;
     [SerializeField] Text scoreText, liveText;
-
+    [SerializeField] AudioClip deathSFX;
     private void Awake()
     {
         int numberGameSession = FindObjectsOfType<GameSession>().Length;
@@ -50,6 +50,7 @@ public class GameSession : MonoBehaviour
         }
         else
         {
+            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
             ResetGame();
         }
     }
