@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
 
         gravityScale = thisRigidBody.gravityScale;
 
+        if(FindObjectOfType<Minion>())
+        {
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), FindObjectOfType<Minion>().GetComponent<BoxCollider2D>());
+        }
+
         myAnimator.SetTrigger("Door Out");
     }
 

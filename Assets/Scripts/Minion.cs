@@ -12,7 +12,7 @@ public class Minion : MonoBehaviour
     Animator myAnimator;
     AudioSource myAudioSource;
 
-    private bool engage = false, flip = true;
+    private bool engage = false, flip = true, isFacingLeft = false;
     private Collider2D playerCollider;
 
     // Start is called before the first frame update
@@ -26,17 +26,18 @@ public class Minion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (flip)
+        {
+            flip = false;
+            StartCoroutine(FlipSprite());
+        }
+
         if(engage)
         {
             Movement();
         }
 
-        if (flip)
-        {
-            playerCollider = Physics2D.OverlapBox(new Vector3(transform.position.x + 1.5f*-1f, transform.position.y, 0f), detectBoxSize, LayerMask.GetMask("Player"));
-            flip = false;
-            StartCoroutine(FlipSprite());
-        }
+        DetectPlayer();
     }
 
     IEnumerator FlipSprite()
@@ -45,22 +46,39 @@ public class Minion : MonoBehaviour
         flip = true;
         if (!engage)
         {
+            isFacingLeft = !isFacingLeft;
             transform.localScale = new Vector2(transform.localScale.x * -1, 1f);
+        }
+    }
+
+    private void DetectPlayer()
+    {
+        if (isFacingLeft)
+        {
+            playerCollider = Physics2D.OverlapBox(new Vector2(transform.position.x + 1.5f * -1f, transform.position.y), detectBoxSize, 0, LayerMask.GetMask("Player"));
+        }
+        else
+        {
+            playerCollider = Physics2D.OverlapBox(new Vector2(transform.position.x + 1.5f, transform.position.y), detectBoxSize, 0, LayerMask.GetMask("Player"));
+        }
+
+        if (playerCollider)
+        {
+            engage = true;
         }
     }
 
     private void Movement()
     {
-        bool isFacingLeft = transform.localScale.x < 0;
         myAnimator.SetTrigger("Run");
 
         if (isFacingLeft)
         {
-            thisRigidBody.velocity = new Vector2(-runSpeed, 0f);
+            thisRigidBody.velocity = new Vector2(-runSpeed, thisRigidBody.velocity.y);
         }
         else
         {
-            thisRigidBody.velocity = new Vector2(runSpeed, 0f);
+            thisRigidBody.velocity = new Vector2(runSpeed, thisRigidBody.velocity.y);
         }
     }
 
@@ -71,8 +89,7 @@ public class Minion : MonoBehaviour
 
         if (playerCollider)
         {
-            //playerCollider.GetComponent<Rigidbody2D>().AddForce(blastForce);
-            //playerCollider.GetComponent<Player>().PlayerHit();
+            playerCollider.GetComponent<Player>().PlayerHit();
         }
     }
 
