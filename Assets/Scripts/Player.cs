@@ -94,7 +94,18 @@ public class Player : MonoBehaviour
 
             foreach(Collider2D enemy in enemiesInRange)
             {
-                enemy.GetComponent<Enemy>().Death();
+                var identitfier = enemy.name.Substring(0, 3);
+
+                Debug.Log(enemy.name);
+                switch (identitfier)
+                {
+                    case "Ene":
+                        enemy.GetComponent<Enemy>().Hit();
+                        break;
+                    case "Min":
+                        enemy.GetComponent<Minion>().Hit();
+                        break;
+                }
             }
         }
     }

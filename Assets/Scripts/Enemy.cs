@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     {
         Movement();
     }
-    public void Death()
+    public void Hit()
     {
         animator.SetTrigger("Death");
         GetComponent<CapsuleCollider2D>().enabled = false;

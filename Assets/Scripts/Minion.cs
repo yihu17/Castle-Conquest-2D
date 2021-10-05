@@ -12,7 +12,7 @@ public class Minion : MonoBehaviour
     Animator myAnimator;
     AudioSource myAudioSource;
 
-    private bool engage = false, flip = true, isFacingLeft = false;
+    private bool engage = false, flip = true, isFacingLeft = false, dead = false;
     private Collider2D playerCollider;
 
     // Start is called before the first frame update
@@ -32,12 +32,15 @@ public class Minion : MonoBehaviour
             StartCoroutine(FlipSprite());
         }
 
-        if(engage)
+        if (engage)
         {
             Movement();
         }
 
-        DetectPlayer();
+        if (!dead)
+        {
+            DetectPlayer();
+        }
     }
 
     IEnumerator FlipSprite()
@@ -91,6 +94,13 @@ public class Minion : MonoBehaviour
         {
             playerCollider.GetComponent<Player>().PlayerHit();
         }
+    }
+
+    public void Hit()
+    {
+        dead = true;
+        myAnimator.SetTrigger("Death");
+        runSpeed = 0f;
     }
 
     void DestroyMinion()
