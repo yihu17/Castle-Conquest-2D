@@ -74,6 +74,7 @@ public class Minion : MonoBehaviour
     private void Movement()
     {
         myAnimator.SetTrigger("Run");
+        myAudioSource.PlayOneShot(burningSFX);
 
         if (isFacingLeft)
         {
