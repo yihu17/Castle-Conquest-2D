@@ -10,7 +10,10 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GetComponent<Animator>().SetTrigger("Open");   
+        if (!FindObjectOfType<Key>())
+        {
+            GetComponent<Animator>().SetTrigger("Open");
+        }
     }
 
     public void StartLoadingNextLevel()

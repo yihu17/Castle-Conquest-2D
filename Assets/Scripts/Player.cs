@@ -64,10 +64,9 @@ public class Player : MonoBehaviour
         bool isEntering = CrossPlatformInputManager.GetButtonDown("Vertical");
         bool isTouching = myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Interactables"));
 
-        if (isEntering && isTouching)
+        if (isEntering && isTouching && !FindObjectOfType<Key>())
         {
             myAnimator.SetTrigger("Door In");
-            
         }
     }
 
